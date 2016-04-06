@@ -1,15 +1,8 @@
 <div class="container-fluid">
   {{#each recipes}}
     <div class="recipe_card">
-      <h3>{{title}}</h3>
-      <p>
-        Directions: {{directions}}
-      </p>
-      <p>
-        Ingredients: {{ingredients}}
-      </p>
-      <img src="{{photo_url}}" alt="" />
-      <a href="recipes/{{id}}">Go To</a>
+      <a href="recipes/{{id}}"><img src="{{photo_url}}" alt="" /></a>
+    </div>
   {{/each}}
 </div>
 

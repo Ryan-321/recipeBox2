@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <form action="/recipes/{{recipe.id}}?_method=PUT" method="post">
+    <h3>Edit your Recipe</h3>
+    <div class="form-group">
+      <label for="recipe_title">Title</label>
+      <input type="text" class="form-control" id="recipe_title" name="title" value="{{recipe.title}}">
+    </div>
+    <div class="form-group">
+      <label for="recipe_ingredients">Ingredients</label>
+      <textarea class="form-control" rows="3" id="recipe_ingredients" name="ingredients">{{recipe.ingredients}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="recipe_directions">Ingredients</label>
+      <textarea class="form-control" rows="3" id="recipe_directions" name="directions">{{recipe.directions}}</textarea>
+    </div>
+    <div class="form-group">
+      <label for="photo_url">Please input your photo URL</label>
+      <input type="text" class="form-control" id="photo_url" name="photo_url" value="{{recipe.photo_url}}">
+    </div>
+    <button type="submit" class="btn btn-default">Edit</button>
+  </form>
+</div>
