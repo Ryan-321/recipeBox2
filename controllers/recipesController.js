@@ -9,4 +9,35 @@ router.get("/recipes", function(req, res){
     res.render("recipe/index", {recipes: recipes});
   });
 });
+
+router.get("/recipes/new", function(req, res){
+  Recipe.findAll().then(function(){
+    res.render("recipe/new");
+  });
+});
+
+router.get("/recipes/:id", function(req,res){
+  Recipe.findById(req.params.id).then(function(recipe){
+    res.render("recipe/show", {recipe: recipe})
+  })
+})
+
+router.post("/recipes", function(req, res){
+  Recipe.create(req.body).then(function(){
+    res.redirect("/recipes");
+  });
+});
+
+router.delete("/recipes/:id", function(req, res){
+  Recipe.findById(req.params.id)
+  .then(function(recipe){
+    if(!recipe) return error(res, "not found");
+    return recipe.destroy()
+  })
+  .then(function(){
+    res.redirect("/recipes")
+  });
+});
+
+
 module.exports = router;

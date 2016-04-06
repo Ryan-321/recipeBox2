@@ -1,0 +1,12 @@
+<h3>{{recipe.title}}</h3>
+<p>
+  Directions: {{recipe.directions}}
+</p>
+<p>
+  Ingredients: {{recipe.ingredients}}
+</p>
+<img src="{{recipe.photo_url}}" alt="" />
+
+<form action="/recipes/{{recipe.id}}?_method=DELETE" method="post">
+  <input class="button-delete" type="submit" value="Delete!">
+</form>
