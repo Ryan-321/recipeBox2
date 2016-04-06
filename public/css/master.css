@@ -1,0 +1,8 @@
+.recipe_card{
+  display: inline-block;
+  width: 33%;
+}
+.recipe_card > img{
+  max-width: 100%;
+  max-height: 100%;
+}

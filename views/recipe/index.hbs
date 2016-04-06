@@ -1,17 +1,14 @@
-
-<ul>
+<div class="container-fluid">
   {{#each recipes}}
-  <li>
-      {{title}}
-  </li>
-  <li>
-    {{directions}}
-  </li>
-  <li>
-    {{ingredients}}
-  </li>
-  <li>
-    <img src="{{photo_url}}"/>
-  </li>
+    <div class="recipe_card">
+      <h3>{{title}}</h3>
+      <p>
+        Directions: {{directions}}
+      </p>
+      <p>
+        Ingredients: {{ingredients}}
+      </p>
+      <img src="{{photo_url}}" alt="" />
+    </div>
   {{/each}}
-</ul>
+</div>
