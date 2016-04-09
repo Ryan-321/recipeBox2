@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var DB = require("../db/connection");
 var Recipe = DB.models.Recipe;
+var Comment = DB.models.Comment;
 
 
 router.get("/recipes", function(req, res){

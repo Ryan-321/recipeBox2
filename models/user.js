@@ -10,7 +10,7 @@
 
 module.exports = function(sequelize, DataTypes){
   return sequelize.define("user", {
-    username: DataTypes.TEXT,
-    password: DataTypes.INTEGER
+    username: DataTypes.STRING,
+    password: DataTypes.STRING
   });
 }

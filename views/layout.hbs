@@ -16,18 +16,24 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/recipes">Recipe Box</a>
+        <a class="navbar-brand" href="/">Recipe Box</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link2</a></li>
+          {{#if currentUser}}
+            <li><p>Welcome {{currentUser}}</p></li>
+            <li><a href="/signout">Sign Out</a></li>
+          {{else}}
+            <li><a href="/signin">Sign In</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+          {{/if}}
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
   {{{body}}}
   <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
   <!-- Latest compiled and minified JavaScript -->
