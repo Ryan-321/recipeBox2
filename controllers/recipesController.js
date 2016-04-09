@@ -17,14 +17,23 @@ router.get("/recipes", function(req, res){
 });
 
 router.get("/recipes/new", function(req, res){
-  Recipe.findAll().then(function(){
-    res.render("recipe/new");
-  });
+  res.render("recipe/new");
 });
 
 router.get("/recipes/:id", function(req,res){
+  var recipe;
   Recipe.findById(req.params.id).then(function(recipe){
-    res.render("recipe/show", {recipe: recipe});
+    recipe = recipe;
+    Comment.findAll({
+      where: {
+        recipeId: req.params.id
+      }
+    }).then(function(comments){
+      res.render("recipe/show", {
+        recipe: recipe,
+        comments: comments
+      });
+    });
   });
 });
 
@@ -50,6 +59,15 @@ router.post("/recipes", function(req, res){
   Recipe.create(req.body).then(function(){
     res.redirect("/recipes");
   });
+});
+
+router.post("/recipes/:id", function(req,res){
+  Comment.create({
+    content: req.body.content,
+    recipeId: req.params.id
+  }).then(function(){
+    res.redirect("/recipes/"+req.params.id)
+  })
 });
 
 router.delete("/recipes/:id", function(req, res){

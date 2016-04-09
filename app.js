@@ -4,6 +4,7 @@ var bcrypt = require("bcrypt-nodejs");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var bodyParser = require("body-parser");
+var path = require("path");
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var recipeController = require("./controllers/recipesController.js");
@@ -15,7 +16,7 @@ app.set("view engine", "hbs");
 app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/public", express.static(__dirname + "/public"));
+app.use("/", express.static(path.join(__dirname + "/public")));
 app.use(flash());
 app.use(require("cookie-parser")());
 app.use(require("express-session")({
