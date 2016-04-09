@@ -5,6 +5,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var bodyParser = require("body-parser");
 var methodOverride = require('method-override');
+var flash = require('connect-flash');
 var recipeController = require("./controllers/recipesController.js");
 var userController = require("./controllers/usersController.js");
 var DB = require("./db/connection");
@@ -15,6 +16,7 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public", express.static(__dirname + "/public"));
+app.use(flash());
 app.use(require("cookie-parser")());
 app.use(require("express-session")({
   secret: "keyboard cat",

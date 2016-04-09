@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt-nodejs");
+var flash = require('connect-flash');
 var DB = require("../db/connection");
 var User = DB.models.User;
 
@@ -19,6 +20,7 @@ router.get("/signout",function(req,res){
 });
 
 router.post("/signup", function(req,res,callback){
+  req.flash('firstTimer', 'Hey there first timer!');
   User.findOne({
     where: {
       username: req.body.username
@@ -40,9 +42,12 @@ router.post("/signup", function(req,res,callback){
     }
   })
 });
-router.post("/signin", passport.authenticate("local", {
+router.post("/signin", function(req,res) {
+  req.flash('welcomeBack', 'Welcome Back!');
+  passport.authenticate("local", {
   failureRedirect: "/signin",
   successRedirect: "/recipes"
-}));
+  })(req, res)
+});
 
 module.exports = router;

@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var flash = require('connect-flash');
 var DB = require("../db/connection");
 var Recipe = DB.models.Recipe;
 var Comment = DB.models.Comment;
@@ -7,7 +8,11 @@ var Comment = DB.models.Comment;
 
 router.get("/recipes", function(req, res){
   Recipe.findAll().then(function(recipes){
-    res.render("recipe/index", {recipes: recipes});
+    res.render("recipe/index", {
+      recipes: recipes,
+      message: req.flash('firstTimer'),
+      message: req.flash('welcomeBack')
+    });
   });
 });
 
