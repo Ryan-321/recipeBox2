@@ -25,9 +25,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     {{#if currentUser}}
-                        <li>
-                            <p>Welcome {{currentUser}}</p>
-                        </li>
+                        <li><a href="/user/{{userId}}/recipes">{{currentUser}}</a></li>
+                        <li><a href="/recipes">Feed</a></li>
                         <li><a href="/signout">Sign Out</a></li>
                     {{else}}
                         <li><a href="/signin">Sign In</a></li>

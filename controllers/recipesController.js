@@ -11,13 +11,10 @@ router.get("/recipes", function(req, res) {
         res.render("recipe/index", {
             recipes: recipes,
             message: req.flash('firstTimer'),
-            message: req.flash('welcomeBack')
+            message: req.flash('welcomeBack'),
+            userId: req.user.id  // need a guest url to avoid this breaking app
         });
     });
-});
-
-router.get("/recipes/new", function(req, res) {
-    res.render("recipe/new");
 });
 
 router.get("/recipes/:id", function(req, res) {
@@ -36,6 +33,10 @@ router.get("/recipes/:id", function(req, res) {
         });
     });
 });
+
+
+
+
 
 router.get("/recipes/:id/edit", function(req, res) {
     Recipe.findById(req.params.id).then(function(recipe) {
@@ -59,18 +60,7 @@ router.put("/recipes/:id", function(req, res) {
         });
 });
 
-router.post("/recipes", function(req, res) {
-    Recipe.create(req.body)
-        .then(function(recipe) {
-            recipe.update({
-                    userId: req.user.id
-                })
-                .then(funciton() {
-                    res.redirect("/recipes");
-                })
-        })
-});
-
+// Below for adding a comment
 router.post("/recipes/:id", function(req, res) {
     Comment.create({
         content: req.body.content,

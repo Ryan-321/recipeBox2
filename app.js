@@ -8,6 +8,7 @@ var path = require("path");
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var recipeController = require("./controllers/recipesController.js");
+var authController = require("./controllers/authController.js");
 var userController = require("./controllers/usersController.js");
 var DB = require("./db/connection");
 var User = DB.models.User;
@@ -68,6 +69,7 @@ app.get("/", function(req, res) {
 });
 
 app.use("/", recipeController);
+app.use("/", authController);
 app.use("/", userController);
 
 app.listen(process.env.PORT || 3000, function() {

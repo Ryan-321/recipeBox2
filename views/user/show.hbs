@@ -7,7 +7,10 @@
         Ingredients: {{recipe.ingredients}}
     </p>
     <img src="{{recipe.photo_url}}" alt="" />
-    {{#if currentUser}}
+    <a href="/recipes/{{recipe.id}}/edit">Edit</a>
+    <form action="/recipes/{{recipe.id}}?_method=DELETE" method="post">
+        <input class="button-delete" type="submit" value="Delete!">
+    </form>
     <form action="/recipes/{{recipe.id}}" method="post">
         <div class="form-group">
             <label for="comment">New Comment</label>
@@ -15,7 +18,6 @@
             <button type="submit" class="btn btn-default">Submit Comment</button>
         </div>
     </form>
-    {{/if}}
 </div>
 
 <div class="container-fluid">
