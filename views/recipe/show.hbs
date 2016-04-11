@@ -1,31 +1,31 @@
 <div class="container-fluid">
-  <h3>{{recipe.title}}</h3>
-  <p>
-    Directions: {{recipe.directions}}
-  </p>
-  <p>
-    Ingredients: {{recipe.ingredients}}
-  </p>
-  <img src="{{recipe.photo_url}}" alt="" />
-  <a href="/recipes/{{recipe.id}}/edit">Edit</a>
-  <form action="/recipes/{{recipe.id}}?_method=DELETE" method="post">
-    <input class="button-delete" type="submit" value="Delete!">
-  </form>
-  <form action="/recipes/{{recipe.id}}" method="post">
-    <div class="form-group">
-      <label for="comment">New Comment</label>
-      <textarea class="form-control" rows="3" id="comment" name="content"></textarea>
-      <button type="submit" class="btn btn-default">Submit Comment</button>
-    </div>
-  </form>
+    <h3>{{recipe.title}}</h3>
+    <p>
+        Directions: {{recipe.directions}}
+    </p>
+    <p>
+        Ingredients: {{recipe.ingredients}}
+    </p>
+    <img src="{{recipe.photo_url}}" alt="" />
+    <a href="/recipes/{{recipe.id}}/edit">Edit</a>
+    <form action="/recipes/{{recipe.id}}?_method=DELETE" method="post">
+        <input class="button-delete" type="submit" value="Delete!">
+    </form>
+    <form action="/recipes/{{recipe.id}}" method="post">
+        <div class="form-group">
+            <label for="comment">New Comment</label>
+            <textarea class="form-control" rows="3" id="comment" name="content"></textarea>
+            <button type="submit" class="btn btn-default">Submit Comment</button>
+        </div>
+    </form>
 </div>
 
 <div class="container-fluid">
-  <ul>
-    {{#each comments}}
-      <li>
-        {{content}}
-      </li>
-    {{/each}}
-  </ul>
+    <ul>
+        {{#each comments}}
+            <li>
+                {{content}}
+            </li>
+        {{/each}}
+    </ul>
 </div>

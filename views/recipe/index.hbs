@@ -1,20 +1,20 @@
 <div class="container-fluid">
-  {{#each recipes}}
-    <div class="recipe_card">
-      <a href="recipes/{{id}}"><img src="{{photo_url}}" alt="" /></a>
-    </div>
-  {{/each}}
+    {{#each recipes}}
+        <div class="recipe_card">
+            <a href="recipes/{{id}}"><img src="{{photo_url}}" alt="" /></a>
+        </div>
+    {{/each}}
 </div>
 {{#if message}}
-  <h1>{{message}}</h1>
+    <h1>{{message}}</h1>
 {{/if}}
 <div class=container-fluid>
-  <div class="row">
-    <div class="col-md-6">
-      <a href="recipes/new">Create New Recipe</a>
-    </div>
-    <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="recipes/new">Create New Recipe</a>
+        </div>
+        <div class="col-md-6">
 
+        </div>
     </div>
-  </div>
 </div>
