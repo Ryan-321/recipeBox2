@@ -39,7 +39,8 @@ router.get("/recipes/:id", function(req, res) {
         }).then(function(comments) {
             res.render("recipe/show", {
                 recipe: recipe,
-                comments: comments
+                comments: comments,
+                userId: req.user.id
             });
         });
     });

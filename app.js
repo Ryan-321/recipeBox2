@@ -7,6 +7,8 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var methodOverride = require('method-override');
 var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var recipeController = require("./controllers/recipesController.js");
 var authController = require("./controllers/authController.js");
 var userController = require("./controllers/usersController.js");
@@ -21,8 +23,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use("/", express.static(path.join(__dirname + "/public")));
 app.use(flash());
-app.use(require("cookie-parser")());
-app.use(require("express-session")({
+
+app.use(cookieParser('keyboard cat'));
+app.use(session({
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true
@@ -46,6 +49,8 @@ passport.use(new LocalStrategy(function(username, pass, callback) {
         return callback(null, user)
     })
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 passport.serializeUser(function(user, callback) {
     callback(null, user.id);
 });
@@ -55,14 +60,13 @@ passport.deserializeUser(function(id, callback) {
     });
 });
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(function(req, res, callback) {
-    if (req.user) {
-        res.locals.currentUser = req.user.username
-    }
-    callback();
-})
+  if (req.user) {
+    res.locals.currentUser = req.user.username
+  }
+  callback();
+});
 
 app.get("/", function(req, res) {
     res.render("home");
