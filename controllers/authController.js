@@ -6,19 +6,24 @@ var flash = require('connect-flash');
 var DB = require("../db/connection");
 var User = DB.models.User;
 
-// Authentication
+
+// Sign Up page
 router.get("/signup", function(req, res) {
     res.render("auth/signup")
 });
 
+// Sign In page
 router.get("/signin", function(req, res) {
     res.render("auth/signin")
 });
+
+// Sign Out page
 router.get("/signout", function(req, res) {
     req.session.destroy();
     res.redirect("/");
 });
 
+// Creating User
 router.post("/signup", function(req, res, callback) {
     req.flash('firstTimer', 'Hey there first timer!');
     User.findOne({
@@ -42,6 +47,8 @@ router.post("/signup", function(req, res, callback) {
         }
     })
 });
+
+// User sign in
 router.post("/signin", function(req, res, next) {
             passport.authenticate('local', function(err, user, info) {
                 if (err) {

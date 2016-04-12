@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <form action="/recipes/{{recipe.id}}?_method=PUT" method="post">
+    <form action="/user/{{userId}}/recipes/{{recipe.id}}?_method=PUT" method="post">
         <h3>Edit your Recipe</h3>
         <div class="form-group">
             <label for="recipe_title">Title</label>
@@ -10,7 +10,7 @@
             <textarea class="form-control" rows="3" id="recipe_ingredients" name="ingredients">{{recipe.ingredients}}</textarea>
         </div>
         <div class="form-group">
-            <label for="recipe_directions">Ingredients</label>
+            <label for="recipe_directions">Directions</label>
             <textarea class="form-control" rows="3" id="recipe_directions" name="directions">{{recipe.directions}}</textarea>
         </div>
         <div class="form-group">

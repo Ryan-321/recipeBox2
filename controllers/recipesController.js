@@ -5,6 +5,17 @@ var DB = require("../db/connection");
 var Recipe = DB.models.Recipe;
 var Comment = DB.models.Comment;
 
+router.get("/guest",function(req,res){
+  Recipe.findAll().then(function(recipes){
+    res.render("recipe/guest",{
+      recipes: recipes
+    })
+  })
+});
+
+router.get("/guestGet", function(req,res){
+  res.render("recipe/guestGet")
+});
 
 router.get("/recipes", function(req, res) {
     Recipe.findAll().then(function(recipes) {
@@ -32,53 +43,6 @@ router.get("/recipes/:id", function(req, res) {
             });
         });
     });
-});
-
-
-
-
-
-router.get("/recipes/:id/edit", function(req, res) {
-    Recipe.findById(req.params.id).then(function(recipe) {
-        if (!recipe) return error(res, "not found");
-        res.render("recipe/edit", {
-            recipe: recipe
-        });
-    });
-});
-
-router.put("/recipes/:id", function(req, res) {
-    Recipe.findById(req.params.id)
-        .then(function(recipe) {
-            if (!recipe) return error(res, "not found");
-            return recipe.updateAttributes(req.body)
-        })
-        .then(function(recipe) {
-            res.render("recipe/show", {
-                recipe: recipe
-            });
-        });
-});
-
-// Below for adding a comment
-router.post("/recipes/:id", function(req, res) {
-    Comment.create({
-        content: req.body.content,
-        recipeId: req.params.id
-    }).then(function() {
-        res.redirect("/recipes/" + req.params.id)
-    })
-});
-
-router.delete("/recipes/:id", function(req, res) {
-    Recipe.findById(req.params.id)
-        .then(function(recipe) {
-            if (!recipe) return error(res, "not found");
-            return recipe.destroy()
-        })
-        .then(function() {
-            res.redirect("/recipes")
-        });
 });
 
 

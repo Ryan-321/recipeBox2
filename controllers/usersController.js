@@ -4,8 +4,8 @@ var flash = require('connect-flash');
 var DB = require("../db/connection");
 var Recipe = DB.models.Recipe;
 var Comment = DB.models.Comment;
-var User = DB.models.User;
 
+// Index page
 router.get("/user/:id/recipes", function(req, res) {
     Recipe.findAll({
         where: {
@@ -19,13 +19,15 @@ router.get("/user/:id/recipes", function(req, res) {
     })
 });
 
+// New page
 router.get("/user/:id/recipes/new", function(req, res) {
     res.render("user/new", {
         userId: req.params.id
     })
 });
 
-router.get("/user/:id/recipes/:recipeId", function(req,res) {
+// Show page
+router.get("/user/:id/recipes/:recipeId", function(req, res) {
     var recipe;
     Recipe.findById(req.params.recipeId).then(function(recipe) {
         recipe = recipe;
@@ -43,6 +45,33 @@ router.get("/user/:id/recipes/:recipeId", function(req,res) {
     })
 });
 
+// Edit Page
+router.get("/user/:id/recipes/:recipeId/edit", function(req, res) {
+    Recipe.findById(req.params.recipeId).then(function(recipe) {
+        if (!recipe) return error(res, "not found");
+        res.render("user/edit", {
+            recipe: recipe,
+            userId: req.params.id
+        });
+    });
+});
+
+// Updating a recipe
+router.put("/user/:id/recipes/:recipeId", function(req, res) {
+    Recipe.findById(req.params.recipeId)
+        .then(function(recipe) {
+            if (!recipe) return error(res, "not found");
+            return recipe.updateAttributes(req.body)
+        })
+        .then(function(recipe) {
+            res.render("user/show", {
+                recipe: recipe,
+                userId: req.params.id
+            });
+        });
+});
+
+// Creating a recipe
 router.post("/user/:id/recipes", function(req, res) {
     Recipe.create(req.body)
         .then(function(recipe) {
@@ -55,6 +84,25 @@ router.post("/user/:id/recipes", function(req, res) {
         })
 });
 
+//  Creating Comments to a recipe
+router.post("/recipes/:id", function(req, res) {
+    Comment.create({
+        content: req.body.content,
+        recipeId: req.params.id
+    }).then(function() {
+        res.redirect("/recipes/" + req.params.id)
+    })
+});
 
-
+// Deleting recipes
+router.delete("/user/:id/recipes/:recipeId", function(req, res) {
+    Recipe.findById(req.params.recipeId)
+        .then(function(recipe) {
+            if (!recipe) return error(res, "not found");
+            return recipe.destroy()
+        })
+        .then(function() {
+            res.redirect("/user/"+req.params.id+"/recipes")
+        });
+});
 module.exports = router;
