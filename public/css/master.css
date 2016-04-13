@@ -1,3 +1,57 @@
+/*************************************
+              HOME
+*************************************/
+
+body {
+    background-color: rgba(207,219,197,.7);
+    font-family: 'Playfair Display', serif;
+    color: #050709;
+}
+
+h1{
+    font-family: 'Josefin Sans', sans-serif;
+}
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+}
+.navbar-default .navbar-nav>li>a{
+  font-size: 1.15em;
+}
+.home-container{
+  margin-top: 10em;
+}
+.home-message{
+  padding-left: 10em;
+}
+.home-message h1{
+  font-size: 4em;
+  line-height: 48px;
+  margin: 24px 0;
+}
+
+.home-message p{
+  font-size: 1.25em;
+  line-height: 24px;
+  margin: 24px 0;
+  font-size: 1.25em;
+}
+
+.home-form p{
+  margin: 1.5em 0;
+  font-size: 1.25em;
+}
+.home-form p a{
+  color: #050709;
+}
+.home-form .form-control{
+  width: 50%;
+}
+
+/*************************************
+              INDEX
+*************************************/
+
 .recipe_card {
     display: inline-block;
     width: 33%;

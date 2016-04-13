@@ -1,5 +1,22 @@
-<form method="post" action="/signup">
-  <input type="text" name="username" placeholder="username" />
-  <input type="password" name="password" placeholder="password"/>
-  <button type="submit">Sign Up</button>
-</form>
+<div class="container-fluid home-container">
+    <div row="row">
+        <div class="col-md-7 home-message">
+            <h1>Welcome to Recipe Box</h1>
+            <p>
+                View all the recipes by other members.  Create, edit and store you own.
+            </p>
+        </div>
+        <div class="col-md-5 home-form">
+            <form method="post" action="/signup">
+                <label>Sign Up</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="username" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password" />
+                </div>
+                <button type="submit" class="btn btn-default">Get Started</button>
+            </form>
+        </div>
+    </div>
+</div>

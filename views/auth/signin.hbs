@@ -1,5 +1,28 @@
-<form method="post" action="/signin">
-  <input type="text" name="username" placeholder="username" />
-  <input type="password" name="password" placeholder="password"/>
-  <button type="submit">Sign In</button>
-</form>
+<div class="container-fluid home-container">
+    <div row="row">
+        <div class="col-md-7 home-message">
+            <h1>Recipe Box</h1>
+            <p>
+                The World's only app to log and browse recipes
+            </p>
+        </div>
+        <div class="col-md-5 home-form">
+            <form method="post" action="/signin">
+                <label>Sign In</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="username" placeholder="username" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password" />
+                </div>
+                <button type="submit" class="btn btn-default">Get Cooking</button>
+            </form>
+            <p>
+                Or
+            </p>
+            <p>
+                <a href="/signup">Sign Up</a>
+            </p>
+        </div>
+    </div>
+</div>

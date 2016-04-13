@@ -69,7 +69,7 @@ app.use(function(req, res, callback) {
 });
 
 app.get("/", function(req, res) {
-    res.render("home");
+    res.render("auth/signin");
 });
 
 app.use("/", recipeController);
