@@ -26,13 +26,14 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     {{#if currentUser}}
-                        <li><a href="/user/{{userId}}/recipes" class="nav_link">{{currentUser}}</a></li>
-                        <li><a href="/recipes" class="nav_link">Feed</a></li>
-                        <li><a href="/signout" class="nav_link">Sign Out</a></li>
+                        <li><a href="/user/{{userId}}/recipes">{{currentUser}}</a></li>
+                        <li><a href="/recipes">Feed</a></li>
+                        <li><a href="/user/{{userId}}/recipes/new">Create Recipe</a></li>
+                        <li><a href="/signout">Sign Out</a></li>
                     {{else}}
-                        <li><a href="/signin" class="nav_link">Sign In</a></li>
-                        <li><a href="/signup" class="nav_link">Sign Up</a></li>
-                        <li><a href="/guest" class="nav_link">Guest View</a></li>
+                        <li><a href="/signin">Sign In</a></li>
+                        <li><a href="/signup">Sign Up</a></li>
+                        <li><a href="/guest">Guest View</a></li>
                     {{/if}}
                 </ul>
             </div>
