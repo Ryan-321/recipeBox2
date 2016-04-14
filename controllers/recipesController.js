@@ -12,7 +12,7 @@ router.get("/guest",function(req,res){
     })
   })
 });
-
+// Guest can view feed
 router.get("/guestGet", function(req,res){
   res.render("recipe/guestGet")
 });

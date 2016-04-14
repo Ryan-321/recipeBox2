@@ -1,7 +1,15 @@
-<div class="container-fluid">
-    {{#each recipes}}
-        <div class="recipe_card">
-            <a href="/guestGet"><img src="{{photo_url}}" alt="" /></a>
-        </div>
-    {{/each}}
+<div class="index-wrapper">
+
+    <div class="container-fluid index-flex-wrapper">
+        {{#each recipes}}
+            <div class="recipe-card">
+                <a href="/guestGet">
+                  <img src="{{photo_url}}" alt="{{title}}" class="img-thumbnail" /></a>
+            </div>
+        {{/each}}
+    </div>
+    {{#if message}}
+        <h1>{{message}}</h1>
+    {{/if}}
+
 </div>

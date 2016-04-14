@@ -1,15 +1,15 @@
 <div class="index-wrapper">
   {{#if recipes}}
-    <div class="container-fluid">
+    <div class="container-fluid index-flex-wrapper">
         {{#each recipes}}
             <div class="recipe-card">
-                <a href="/user/{{userId}}/recipes/{{id}}"><img src="{{photo_url}}" alt="" /></a>
+                <a href="/user/{{userId}}/recipes/{{id}}"><img src="{{photo_url}}" alt="{{title}}" class="img-thumbnail" /></a>
             </div>
         {{/each}}
     </div>
   {{else}}
-    <div class="container-fluid">
-      <h1>You need to get some recipes.  Start Creating!!!!!!!</h1>
+    <div class="container-fluid no-recipes-wrapper">
+      <h1>You need to get some recipes.  Start Creating!</h1>
     </div>
   {{/if}}
 

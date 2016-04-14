@@ -1,9 +1,10 @@
 <div class="index-wrapper">
 
-    <div class="container-fluid">
+    <div class="container-fluid index-flex-wrapper">
         {{#each recipes}}
             <div class="recipe-card">
-                <a href="recipes/{{id}}"><img src="{{photo_url}}" alt="" /></a>
+                <a href="recipes/{{id}}">
+                  <img src="{{photo_url}}" alt="{{title}}" class="img-thumbnail" /></a>
             </div>
         {{/each}}
     </div>
