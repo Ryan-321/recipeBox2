@@ -69,7 +69,6 @@ h1 {
 
 }
 .recipe-card {
-    display: inline-block;
     width: 30%;
     height: 200px;
     margin: auto;
@@ -99,10 +98,41 @@ h1 {
 /*************************************
               SHOW
 *************************************/
+.show-wrapper{
+  width: 90%;
+  margin: 3em auto;
+}
 .show-img{
-  
+
 }
 .show-img img{
   width: 75%;
   height: 75%;
+}
+span.breakLines{
+  white-space: pre-wrap;
+}
+div.show-boxes{
+  width: 75%;
+  padding: 1em;
+  border-top:1px solid black;
+}
+/*************************************
+              NEW
+*************************************/
+.new-form-wrapper{
+  width: 50%;
+  margin: 5em auto;
+  /*white-space: pre;*/
+}
+
+
+/*************************************
+              MEDIA QUERIES
+*************************************/
+
+@media screen and (max-width: 600px){
+  .recipe-card{
+    width: 100%;
+  }
 }

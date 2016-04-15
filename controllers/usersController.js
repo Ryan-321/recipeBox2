@@ -10,20 +10,25 @@ router.get("/user/:id/recipes", function(req, res) {
     Recipe.findAll({
         where: {
             userId: req.params.id
-        }
+        },
+        order: [
+            ["createdAt", "DESC"]
+        ]
     }).then(function(recipes) {
         res.render("user/index", {
             recipes: recipes,
             userId: req.params.id
         })
+    }).catch(function(err) {
+        res.send(500)
     })
 });
 
 // New page
 router.get("/user/:id/recipes/new", function(req, res) {
-    res.render("user/new", {
-        userId: req.params.id
-    })
+  res.render("user/new", {
+    userId: req.params.id
+  })
 });
 
 // Show page
@@ -41,7 +46,11 @@ router.get("/user/:id/recipes/:recipeId", function(req, res) {
                 recipe: recipe,
                 userId: req.params.id
             })
+        }).catch(function(err) {
+            res.send(500)
         })
+    }).catch(function(err) {
+        res.sendStatus(status)
     })
 });
 
@@ -53,6 +62,8 @@ router.get("/user/:id/recipes/:recipeId/edit", function(req, res) {
             recipe: recipe,
             userId: req.params.id
         });
+    }).catch(function(err) {
+        res.send(500)
     });
 });
 
@@ -68,6 +79,18 @@ router.put("/user/:id/recipes/:recipeId", function(req, res) {
                 recipe: recipe,
                 userId: req.params.id
             });
+        }).catch(function(err) {
+            if (err.name === "SequelizeValidationError") {
+                res.render("user/edit", {
+                    recipe: Recipe.build(req.body),
+                    userId: req.params.id,
+                    errors: err.errors
+                });
+            } else {
+                throw err;
+            }
+        }).catch(function(err) {
+            res.send(500)
         });
 });
 
@@ -75,22 +98,29 @@ router.put("/user/:id/recipes/:recipeId", function(req, res) {
 router.post("/user/:id/recipes", function(req, res) {
     Recipe.create(req.body)
         .then(function(recipe) {
-            recipe.update({
-                    userId: req.params.id
-                })
-                .then(function() {
-                    res.redirect("/user/" + req.params.id + "/recipes");
-                })
+            recipe.inputUser(recipe, req.params.id)  // instanceMethod
+            res.redirect("/user/" + req.params.id + "/recipes");
+        }).catch(function(err) {
+            if (err.name === "SequelizeValidationError") {
+                res.render("user/new", {
+                    recipe: Recipe.build(req.body),
+                    userId: req.params.id,
+                    errors: err.errors
+                });
+            } else {
+                throw err;
+            }
+        }).catch(function(err) {
+            res.send(err)
         })
 });
 
-//  Creating Comments to a recipe
-router.post("/recipes/:id", function(req, res) {
+router.post("/user/:id/recipes/:recipeId", function(req, res) {
     Comment.create({
         content: req.body.content,
-        recipeId: req.params.id
+        recipeId: req.params.recipeId
     }).then(function() {
-        res.redirect("/recipes/" + req.params.id)
+        res.redirect("/recipes/" + req.params.recipeId)
     })
 });
 
@@ -102,7 +132,9 @@ router.delete("/user/:id/recipes/:recipeId", function(req, res) {
             return recipe.destroy()
         })
         .then(function() {
-            res.redirect("/user/"+req.params.id+"/recipes")
-        });
+            res.redirect("/user/" + req.params.id + "/recipes")
+        }).catch(function(err){
+          res.send(500)
+        })
 });
 module.exports = router;

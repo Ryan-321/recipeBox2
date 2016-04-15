@@ -1,3 +1,5 @@
+<div class="new-form-wrapper">
+
 <div class="container-fluid">
     <form action="/user/{{userId}}/recipes/{{recipe.id}}?_method=PUT" method="post">
         <h3>Edit your Recipe</h3>
@@ -7,11 +9,11 @@
         </div>
         <div class="form-group">
             <label for="recipe_ingredients">Ingredients</label>
-            <textarea class="form-control" rows="3" id="recipe_ingredients" name="ingredients">{{recipe.ingredients}}</textarea>
+            <textarea class="form-control" rows="8" id="recipe_ingredients" name="ingredients">{{recipe.ingredients}}</textarea>
         </div>
         <div class="form-group">
             <label for="recipe_directions">Directions</label>
-            <textarea class="form-control" rows="3" id="recipe_directions" name="directions">{{recipe.directions}}</textarea>
+            <textarea class="form-control" rows="8" id="recipe_directions" name="directions">{{recipe.directions}}</textarea>
         </div>
         <div class="form-group">
             <label for="photo_url">Please input your photo URL</label>
@@ -19,4 +21,6 @@
         </div>
         <button type="submit" class="btn btn-default">Edit</button>
     </form>
+</div>
+
 </div>

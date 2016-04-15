@@ -6,16 +6,18 @@ var Recipe = DB.models.Recipe;
 var Comment = DB.models.Comment;
 
 router.get("/guest",function(req,res){
-  Recipe.findAll().then(function(recipes){
+  Recipe.findAll({order: [["createdAt","DESC"]]}).then(function(recipes){
     res.render("recipe/guest",{
       recipes: recipes
     })
-  })
+  }).catch(function(err) {
+      res.send(500)
+  });
 });
 // Guest can view feed
 router.get("/guestGet", function(req,res){
   res.render("recipe/guestGet")
-});
+})
 
 router.get("/recipes", function(req, res) {
     Recipe.findAll().then(function(recipes) {
@@ -25,6 +27,8 @@ router.get("/recipes", function(req, res) {
             message: req.flash('welcomeBack'),
             userId: req.user.id  // need a guest url to avoid this breaking app
         });
+    }).catch(function(err) {
+        res.send(500)
     });
 });
 
@@ -42,9 +46,12 @@ router.get("/recipes/:id", function(req, res) {
                 comments: comments,
                 userId: req.user.id
             });
+        }).catch(function(err) {
+            res.send(500)
         });
+    }).catch(function(err) {
+        res.send(500)
     });
 });
-
 
 module.exports = router;

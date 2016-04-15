@@ -1,14 +1,17 @@
+<div class="show-wrapper">
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-7 ">
-
-            <h3>{{recipe.title}}</h3>
-            <p>
-                Directions: {{recipe.directions}}
-            </p>
-            <p>
-                Ingredients: {{recipe.ingredients}}
-            </p>
+          <h3>{{recipe.title}}</h3>
+          <p>Ingredients:</p>
+          <div class="show-boxes">
+            <span class="breakLines"> {{recipe.ingredients}}</span>
+          </div>
+          <p>Directions:</p>
+          <div class="show-boxes">
+            <span class="breakLines"> {{recipe.directions}}</span>
+          </div>
         </div>
         <div class="col-md-5 show-img">
           <img src="{{recipe.photo_url}}" alt="{{recipe.title}}" />
@@ -18,12 +21,12 @@
 
 <div class="container-fluid">
   {{#if currentUser}}
-  <form action="/recipes/{{recipe.id}}" method="post" class="comment-form">
-    <div class="form-group">
-      <label for="comment">New Comment</label>
-      <textarea class="form-control" rows="3" id="comment" name="content"></textarea>
-      <button type="submit" class="btn btn-default">Submit Comment</button>
-    </div>
+  <form action="/user/{{userId}}/recipes/{{recipe.id}}" method="post">
+      <div class="form-group">
+          <label for="comment">New Comment</label>
+          <textarea class="form-control" rows="3" id="comment" name="content"></textarea>
+          <button type="submit" class="btn btn-default">Submit Comment</button>
+      </div>
   </form>
   {{/if}}
 </div>
@@ -36,3 +39,4 @@
       {{/each}}
     </ul>
   </div>
+</div>
