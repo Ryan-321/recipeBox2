@@ -169,4 +169,15 @@ h2.comments-header{
   .recipe-card{
     width: 100%;
   }
+  .home-message{
+    padding-left: 0;
+    text-align: center;
+  }
+  .home-form{
+    text-align: center;
+  }
+  .home-form input{
+    margin: 0 auto;
+    width: 100%;
+  }
 }
