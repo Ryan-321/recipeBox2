@@ -25,7 +25,6 @@ router.get("/signout", function(req, res) {
 
 // Creating User
 router.post("/signup", function(req, res, callback) {
-    req.flash('firstTimer', 'Hey there first timer!');
     User.findOne({
         where: {
             username: req.body.username

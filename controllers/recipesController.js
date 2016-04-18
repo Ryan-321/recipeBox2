@@ -10,8 +10,8 @@ router.get("/guest",function(req,res){
     res.render("recipe/guest",{
       recipes: recipes
     })
-  }).catch(function(err) {
-      res.send(500)
+  }).catch(function(status) {
+      res.sendStatus(status)
   });
 });
 // Guest can view feed
@@ -23,12 +23,10 @@ router.get("/recipes", function(req, res) {
     Recipe.findAll({order: [["createdAt", "DESC"]]}).then(function(recipes) {
         res.render("recipe/index", {
             recipes: recipes,
-            message: req.flash('firstTimer'),
-            message: req.flash('welcomeBack'),
             userId: req.user.id  // need a guest url to avoid this breaking app
         });
-    }).catch(function(err) {
-        res.send(500)
+    }).catch(function(status) {
+        res.sendStatus(status)
     });
 });
 
@@ -46,11 +44,11 @@ router.get("/recipes/:id", function(req, res) {
                 comments: comments,
                 userId: req.user.id
             });
-        }).catch(function(err) {
-            res.send(500)
+        }).catch(function(status) {
+            res.sendStatus(status)
         });
-    }).catch(function(err) {
-        res.send(500)
+    }).catch(function(status) {
+        res.sendStatus(status)
     });
 });
 

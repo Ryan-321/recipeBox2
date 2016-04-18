@@ -19,8 +19,8 @@ router.get("/user/:id/recipes", function(req, res) {
             recipes: recipes,
             userId: req.params.id
         })
-    }).catch(function(err) {
-        res.send(500)
+    }).catch(function(status) {
+        res.sendStatus(status)
     })
 });
 
@@ -49,10 +49,10 @@ router.get("/user/:id/recipes/:recipeId", function(req, res) {
                 recipe: recipe,
                 userId: req.params.id
             })
-        }).catch(function(err) {
-            res.send(500)
+        }).catch(function(status) {
+            res.sendStatus(status)
         })
-    }).catch(function(err) {
+    }).catch(function(status) {
         res.sendStatus(status)
     })
 });
@@ -65,8 +65,8 @@ router.get("/user/:id/recipes/:recipeId/edit", function(req, res) {
             recipe: recipe,
             userId: req.params.id
         });
-    }).catch(function(err) {
-        res.send(500)
+    }).catch(function(status) {
+        res.sendStatus(status)
     });
 });
 
@@ -92,8 +92,8 @@ router.put("/user/:id/recipes/:recipeId", function(req, res) {
             } else {
                 throw err;
             }
-        }).catch(function(err) {
-            res.send(500)
+        }).catch(function(status) {
+            res.sendStatus(status)
         });
 });
 
@@ -113,8 +113,8 @@ router.post("/user/:id/recipes", function(req, res) {
             } else {
                 throw err;
             }
-        }).catch(function(err) {
-            res.send(err)
+        }).catch(function(status) {
+            res.sendStatus(status)
         })
 });
 
@@ -137,8 +137,8 @@ router.delete("/user/:id/recipes/:recipeId", function(req, res) {
         })
         .then(function() {
             res.redirect("/user/" + req.params.id + "/recipes")
-        }).catch(function(err){
-          res.send(500)
+        }).catch(function(status){
+          res.sendStatus(status)
         })
 });
 module.exports = router;
