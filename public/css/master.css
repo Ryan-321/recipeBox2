@@ -102,12 +102,11 @@ h1 {
   width: 90%;
   margin: 3em auto;
 }
-.show-img{
-
-}
-.show-img img{
+.show-img > img{
   width: 75%;
   height: 75%;
+  display: block;
+  margin: 3em auto;
 }
 span.breakLines{
   white-space: pre-wrap;
@@ -116,6 +115,41 @@ div.show-boxes{
   width: 75%;
   padding: 1em;
   border-top:1px solid black;
+}
+div.add-comment-container{
+  margin-bottom: 2em;
+}
+/*********BUTTONS********/
+div.show-buttons{
+  margin-top: 20px;
+  text-align: center;
+}
+div.add-comment{
+  display: none;
+}
+a.edit{
+  display: inline-block;
+}
+form.delete{
+  display: inline-block;
+}
+/*********COMMENTS********/
+div.comments{
+  border-radius: 5px;
+  border: 1px slategrey solid;
+  background-color: #fff;
+  padding: 1em;
+  margin: 3em auto;
+  width: 70%;
+
+}
+.comments > li{
+  padding: .5em;
+}
+h2.comments-header{
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 0 auto;
+  text-align: center;
 }
 /*************************************
               NEW

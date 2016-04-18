@@ -6,7 +6,7 @@ var Recipe = DB.models.Recipe;
 var Comment = DB.models.Comment;
 
 router.get("/guest",function(req,res){
-  Recipe.findAll({order: [["createdAt","DESC"]]}).then(function(recipes){
+  Recipe.findAll({order: [["createdAt", "DESC"]]}).then(function(recipes){
     res.render("recipe/guest",{
       recipes: recipes
     })
@@ -20,7 +20,7 @@ router.get("/guestGet", function(req,res){
 })
 
 router.get("/recipes", function(req, res) {
-    Recipe.findAll().then(function(recipes) {
+    Recipe.findAll({order: [["createdAt", "DESC"]]}).then(function(recipes) {
         res.render("recipe/index", {
             recipes: recipes,
             message: req.flash('firstTimer'),

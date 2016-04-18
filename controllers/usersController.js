@@ -39,7 +39,10 @@ router.get("/user/:id/recipes/:recipeId", function(req, res) {
         Comment.findAll({
             where: {
                 recipeId: req.params.recipeId
-            }
+            },
+            order: [
+                ["createdAt", "DESC"]
+            ]
         }).then(function(comments) {
             res.render("user/show", {
                 comments: comments,
@@ -115,6 +118,7 @@ router.post("/user/:id/recipes", function(req, res) {
         })
 });
 
+// Creating Comment
 router.post("/user/:id/recipes/:recipeId", function(req, res) {
     Comment.create({
         content: req.body.content,

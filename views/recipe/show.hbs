@@ -14,15 +14,16 @@
           </div>
         </div>
         <div class="col-md-5 show-img">
-          <img src="{{recipe.photo_url}}" alt="{{recipe.title}}" />
+          <img src="{{recipe.photo_url}}" alt="{{recipe.title}}" class="img-thumbnail"/>
         </div>
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid add-comment-container">
   {{#if currentUser}}
   <form action="/user/{{userId}}/recipes/{{recipe.id}}" method="post">
-      <div class="form-group">
+      <button class="add-comment-button btn btn-default">Comment</button>
+      <div class="form-group add-comment">
           <label for="comment">New Comment</label>
           <textarea class="form-control" rows="3" id="comment" name="content"></textarea>
           <button type="submit" class="btn btn-default">Submit Comment</button>
@@ -30,7 +31,9 @@
   </form>
   {{/if}}
 </div>
-  <div class="container-fluid">
+{{#if comments}}
+  <h2 class="comments-header">Comments</h2>
+  <div class="container-fluid comments">
     <ul>
       {{#each comments}}
       <li>
@@ -39,4 +42,5 @@
       {{/each}}
     </ul>
   </div>
+  {{/if}}
 </div>
