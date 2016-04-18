@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var bcrypt = require("bcrypt-nodejs");
-var flash = require('connect-flash');
 var DB = require("../db/connection");
 var User = DB.models.User;
 
