@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var bcrypt = require("bcrypt-nodejs");
-var flash = require('connect-flash');
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
 var bodyParser = require("body-parser");
