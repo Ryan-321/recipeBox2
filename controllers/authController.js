@@ -41,7 +41,7 @@ router.post("/signup", function(req, res, callback) {
                 })(req, res, callback)
             })
         } else {
-            res.send("user exists")
+            res.render("static/exists")
         }
     })
 });

@@ -6,8 +6,7 @@
 
 # Installation:
 
-  If you wish to add install this app on your machine, please fork this repo and then clone down.  Send me a pull
-  request with your new addition.  
+  If you wish to add install this app on your machine, please fork this repo and then clone down.  Send me a pull request with your new addition.  
 
 
 # Technologies:
@@ -20,9 +19,9 @@
 
 # Approach:
 
-  I really wanted to experiment with a Full-Stack app in Node enviroment using Express.  
+  I really wanted to experiment with a Full-Stack app in Node environment using Express.  
 
 
 # Unsolved Issues:
 
-* I would like to add a service so a user could upload there image and save it a Database.  
+* I would like to add a service so a user could upload images and instead of using a URL.  
